@@ -1,6 +1,7 @@
 /* @flow */
 var PokemonRow = React.createClass({
     render: function(){
-        return (<p>{this.props.pokemon.name}</p>)
+        "use strict";
+        return (<p>{this.props.pokemon.name}</p>);
     }
-})
+});

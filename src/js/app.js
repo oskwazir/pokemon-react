@@ -1,3 +1,5 @@
+"use strict";
+
 var POKEMON = [{"name": "rattata", "resource_uri": "api/v1/pokemon/19/"},
 {"name": "charmander", "resource_uri": "api/v1/pokemon/4/"},
 {"name": "charmeleon", "resource_uri": "api/v1/pokemon/5/"},
@@ -38,4 +40,4 @@ var POKEMON = [{"name": "rattata", "resource_uri": "api/v1/pokemon/19/"},
 {"name": "gloom", "resource_uri": "api/v1/pokemon/44/"},
 {"name": "vileplume", "resource_uri": "api/v1/pokemon/45/"}];
 
-React.render(React.createElement(FilterablePokedexTable, {pokemon: POKEMON}), document.body);
+React.render(<FilterablePokedexTable  pokemon={POKEMON} />, document.body);

@@ -1,7 +1,8 @@
 var SearchBar = React.createClass({
     render: function(){
-        return <form>
+        "use strict";
+        return (<form>
                     <input type="text" placeholder="Search..." />
-                </form>
+                </form>);
     }
 });
