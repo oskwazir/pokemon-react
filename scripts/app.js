@@ -43,7 +43,7 @@ var PokedexTable = React.createClass({ displayName: "PokedexTable",
 var PokemonRow = React.createClass({ displayName: "PokemonRow",
     render: function () {
         "use strict";
-        return React.createElement("div", { className: "item" }, this.props.pokemon.name);
+        return React.createElement("div", { className: "item animated fadeIn" }, this.props.pokemon.name);
     }
 });
 "use strict";
@@ -60,7 +60,7 @@ var SearchBar = React.createClass({ displayName: "SearchBar",
             value: this.props.filterText,
             onChange: this.handleChange,
             ref: "filterTextInput",
-            className: "searchBar",
+            className: "searchBar h1",
             type: "text",
             placeholder: "Search..." })));
     }

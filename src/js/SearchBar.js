@@ -15,7 +15,7 @@ var SearchBar = React.createClass({
                             value={this.props.filterText}
                             onChange={this.handleChange}
                             ref="filterTextInput"
-                            className="searchBar" 
+                            className="searchBar h1" 
                             type="text" 
                             placeholder="Search..." />
                     </form>
