@@ -3,6 +3,7 @@
 @gray:         lighten(#000, 33.5%); // #555
 @gray-light:   lighten(#000, 46.7%); // #777
 @gray-lighter: lighten(#000, 93.5%); // #eee
+@text-color: limegreen;
 @font-family-sans-serif:  "brandon-grotesque", "Avenir Next", "Segoe UI", sans-serif;
 @font-family-base:        @font-family-sans-serif;
 @font-size-base: 18px;
@@ -24,7 +25,8 @@ body{
   font-size: @font-size-base;
   max-width: 800px;
   margin:50px auto;
-  color:@gray;
+  color:@text-color;
+  background-color: @gray-darker;
 }
 h1,h2,h3,h4,h5,h6{
   font-weight:@headings-font-weight;
@@ -53,19 +55,23 @@ h1{
   height:3rem;
   width:18rem;
   font-size:2rem;
+  border:none;
+  border-bottom:1px solid @text-color;
+  background-color: @gray-darker;
 }
 
 .main{
   display:flex;
   flex-flow: row wrap;
   justify-content:center;
+  margin-top:50px;
 }
 
 .item{
   border:1px solid #888;
   border-radius:2px;
   margin:5px;
-  background-color:white;
+  background-color:@gray-darker;
   padding:20px 30px;
 }
 
