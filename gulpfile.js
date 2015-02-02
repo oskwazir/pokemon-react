@@ -38,7 +38,7 @@ gulp.task('scripts', function () {
         .pipe($.react())
         .pipe($.sixTofive())
         .pipe($.concat('app.js'))
-        .pipe($.uglify())
+        // .pipe($.uglify())
         .pipe(gulp.dest('scripts'))
         .pipe($.size());;
 });
