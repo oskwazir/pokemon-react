@@ -1,20 +1,24 @@
 var SearchBar = React.createClass({
+    handleChange: function() {
+        "use strict";
+        var self = this;
+        self.props.onUserInput(
+            self.refs.filterTextInput.getDOMNode().value
+        );
+    },
     render: function(){
         "use strict";
         return (<div className="wrapper">
                     <header className="header"><h1>Pokedex</h1></header>
                     <form>
-                        <input className="searchBar" type="text" placeholder="Search..." />
+                        <input 
+                            value={this.props.filterText}
+                            onChange={this.handleChange}
+                            ref="filterTextInput"
+                            className="searchBar" 
+                            type="text" 
+                            placeholder="Search..." />
                     </form>
                 </div>);
     }
 });
-
-/*
-<div class="wrapper">
-  <header class="header"><h1>Pokedex</h1></header>
-    <form>
-    <input class="searchBar" type="text" placeholder="Search..." />
-  </form>
-</div>
-*/
