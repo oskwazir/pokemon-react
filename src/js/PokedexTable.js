@@ -6,9 +6,8 @@ var PokedexTable = React.createClass({
             rows.push(<PokemonRow pokemon={pokemon} key={pokemon.name} />);
         });
 
-        return (<div><h1 className="list-title">Pokedex</h1>
-                <ul>
-                    <li>{rows}</li>
-                </ul></div>);
+        return (<div className="main">
+                    {rows}
+                </div>);
     }
 });
