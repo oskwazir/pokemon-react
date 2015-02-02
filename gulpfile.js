@@ -40,7 +40,6 @@ gulp.task('scripts', function () {
         .pipe($.concat('app.js'))
         .pipe($.uglify())
         .pipe(gulp.dest('scripts'))
-        .pipe(reload({stream:true}))
         .pipe($.size());;
 });
 
@@ -51,6 +50,6 @@ gulp.task('build', ['styles','scripts']);
 
 gulp.task('default', ['clean'], function () {
     gulp.start(['build', 'browser-sync']);
-    gulp.watch('src/**/*.js' ['scripts']);
+    gulp.watch('src/**/*.js', ['scripts', reload]);
     gulp.watch('src/**/*.css', ['styles']);
 });
