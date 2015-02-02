@@ -1,9 +1,21 @@
 var gulp = require('gulp');
 var del = require('del');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 var plugins = require('gulp-load-plugins')();
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*'],
   rename: {'gulp-6to5':'sixTofive'}
+});
+
+gulp.task('browser-sync',  ['build'],  function() {
+  browserSync({
+    server: {
+      baseDir: './',
+      directory: false,
+    },
+    open: false
+  });
 });
 
 gulp.task('clean', function(cb) {
@@ -17,7 +29,8 @@ gulp.task('styles', function () {
         }))
         .pipe($.csso())
         .pipe(gulp.dest('css'))
-        .pipe($.size());;
+        .pipe(reload({stream:true}))
+        .pipe($.size());
 });
 
 gulp.task('scripts', function () {
@@ -27,11 +40,17 @@ gulp.task('scripts', function () {
         .pipe($.concat('app.js'))
         .pipe($.uglify())
         .pipe(gulp.dest('scripts'))
+        .pipe(reload({stream:true}))
         .pipe($.size());;
+});
+
+gulp.task('serve', ['build', 'browser-sync'],  function() {
 });
 
 gulp.task('build', ['styles','scripts']);
 
 gulp.task('default', ['clean'], function () {
-    gulp.start('build');
+    gulp.start(['build', 'browser-sync']);
+    gulp.watch('src/**/*.js' ['scripts']);
+    gulp.watch('src/**/*.css', ['styles']);
 });
