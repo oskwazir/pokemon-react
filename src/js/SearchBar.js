@@ -4,7 +4,7 @@ var SearchBar = React.createClass({
         return (<div className="wrapper">
                     <header className="header"><h1>Pokedex</h1></header>
                     <form>
-                        <input type="text" placeholder="Search..." />
+                        <input className="searchBar" type="text" placeholder="Search..." />
                     </form>
                 </div>);
     }

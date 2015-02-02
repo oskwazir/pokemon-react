@@ -33,7 +33,7 @@ var PokemonRow = React.createClass({ displayName: "PokemonRow",
 var SearchBar = React.createClass({ displayName: "SearchBar",
     render: function () {
         "use strict";
-        return React.createElement("div", { className: "wrapper" }, React.createElement("header", { className: "header" }, React.createElement("h1", null, "Pokedex")), React.createElement("form", null, React.createElement("input", { type: "text", placeholder: "Search..." })));
+        return React.createElement("div", { className: "wrapper" }, React.createElement("header", { className: "header" }, React.createElement("h1", null, "Pokedex")), React.createElement("form", null, React.createElement("input", { className: "searchBar", type: "text", placeholder: "Search..." })));
     }
 });
 

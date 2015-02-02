@@ -18,12 +18,19 @@ gulp.task('browser-sync',  ['build'],  function() {
   });
 });
 
+function handleError(err) {
+  console.error(err.toString());
+  this.emit('end');
+}
+
 gulp.task('clean', function(cb) {
   del(['css','scripts'], cb);
 });
  
 gulp.task('styles', function () {
-    return gulp.src('src/css/*.css')
+    return gulp.src('src/styles/*.less')
+        .pipe($.less())
+        .on('error', handleError)
         .pipe($.autoprefixer({
             browsers: ['last 2 versions']
         }))
@@ -51,5 +58,5 @@ gulp.task('build', ['styles','scripts']);
 gulp.task('default', ['clean'], function () {
     gulp.start(['build', 'browser-sync']);
     gulp.watch('src/**/*.js', ['scripts', reload]);
-    gulp.watch('src/**/*.css', ['styles']);
+    gulp.watch('src/**/*.less', ['styles']);
 });
