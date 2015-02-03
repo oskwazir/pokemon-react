@@ -1,3 +1,6 @@
+var React = require('react');
+var PokemonRow = require('./PokemonRow.react');
+
 class PokedexTable extends React.Component{
     constructor() {
         super();
@@ -14,3 +17,5 @@ class PokedexTable extends React.Component{
         return (<div className="main">{rows}</div>);
     }
 };
+
+module.exports = PokedexTable;

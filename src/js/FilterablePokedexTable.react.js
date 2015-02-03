@@ -1,3 +1,7 @@
+var React = require('react');
+var SearchBar = require('./SearchBar.react');
+var PokedexTable = require('./PokedexTable.react');
+
 class FilterablePokedexTable extends React.Component {
     constructor(props) {
         super(props);
@@ -21,3 +25,5 @@ class FilterablePokedexTable extends React.Component {
                 </div>);
     }
 };
+
+module.exports = FilterablePokedexTable;

@@ -1,5 +1,8 @@
 "use strict";
 
+var React = require('react');
+var FilterablePokedexTable = require('./FilterablePokedexTable.react');
+
 var POKEMON = [{"name": "rattata", "resource_uri": "api/v1/pokemon/19/"},
 {"name": "charmander", "resource_uri": "api/v1/pokemon/4/"},
 {"name": "charmeleon", "resource_uri": "api/v1/pokemon/5/"},

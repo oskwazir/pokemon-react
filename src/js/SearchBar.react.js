@@ -1,3 +1,4 @@
+var React = require('react');
 class SearchBar extends React.Component {
     constructor() {
         super();
@@ -23,3 +24,4 @@ class SearchBar extends React.Component {
                 </div>);
     }
 };
+module.exports = SearchBar;

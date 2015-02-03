@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var del = require('del');
 var browserSync = require('browser-sync');
@@ -7,6 +9,14 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*'],
   rename: {'gulp-6to5':'sixTofive'}
 });
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var browserify = require('browserify');
+var getBundleName = function () {
+  var version = require('./package.json').version;
+  var name = require('./package.json').name;
+  return version + '.' + name + '.' + 'min';
+};
 
 gulp.task('browser-sync',  ['build'],  function() {
   browserSync({
@@ -23,8 +33,31 @@ function handleError(err) {
   this.emit('end');
 }
 
+gulp.task('browserify',  ['jsx'], function() {
+
+  var bundler = browserify({
+    entries: ['./build/app.react.js'],
+    debug: true
+  });
+
+  var bundle = function() {
+    return bundler
+      .bundle()
+      .pipe(source(getBundleName() + '.js'))
+      .pipe(buffer())
+      .pipe($.sourcemaps.init({loadMaps: true}))
+        // Add transformation tasks to the pipeline here.
+      .pipe($.sixTofive())
+      .pipe($.uglify())
+      .pipe($.sourcemaps.write('./'))
+      .pipe(gulp.dest('./js/'));
+  };
+
+  return bundle();
+});
+
 gulp.task('clean', function(cb) {
-  del(['css','scripts'], cb);
+  del(['css','scripts','build'], cb);
 });
  
 gulp.task('styles', function () {
@@ -40,23 +73,20 @@ gulp.task('styles', function () {
         .pipe($.size());
 });
 
-gulp.task('scripts', function () {
-    return gulp.src('src/js/*.js')
+gulp.task('jsx', function () {
+    return gulp.src('src/js/*.react.js')
         .pipe($.react())
-        .pipe($.sixTofive())
-        .pipe($.concat('app.js'))
-        // .pipe($.uglify())
-        .pipe(gulp.dest('scripts'))
+        .pipe(gulp.dest('build'))
         .pipe($.size());;
 });
 
 gulp.task('serve', ['build', 'browser-sync'],  function() {
 });
 
-gulp.task('build', ['styles','scripts']);
+gulp.task('build', ['styles','browserify']);
 
 gulp.task('default', ['clean'], function () {
     gulp.start(['build', 'browser-sync']);
-    gulp.watch('src/**/*.js', ['scripts', reload]);
+    gulp.watch('src/**/*.js', ['browserify', reload]);
     gulp.watch('src/**/*.less', ['styles']);
 });
