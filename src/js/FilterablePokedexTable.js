@@ -1,17 +1,15 @@
-var FilterablePokedexTable = React.createClass({
-    getInitialState: function() {
-        return {
-            filterText: ''
-        };
-    },
-    handleUserInput: function(filterText) {
-        var self = this;
-        self.setState({
+class FilterablePokedexTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {filterText: ''};
+        this.handleUserInput = this.handleUserInput.bind(this);
+    }
+    handleUserInput(filterText) {
+        this.setState({
             filterText: filterText
         });
-    },
-    render: function(){
-        "use strict";
+    }
+    render(){
         return (
                 <div>
                     <SearchBar 
@@ -22,4 +20,4 @@ var FilterablePokedexTable = React.createClass({
                         pokemon={this.props.pokemon} />
                 </div>);
     }
-});
+};

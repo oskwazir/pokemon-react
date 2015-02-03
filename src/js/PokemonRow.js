@@ -1,7 +1,6 @@
 /* @flow */
-var PokemonRow = React.createClass({
-    render: function(){
-        "use strict";
+class PokemonRow extends React.Component{
+    render() {
         return (<div className="item animated fadeIn">{this.props.pokemon.name}</div>);
     }
-});
+};

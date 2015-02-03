@@ -1,13 +1,14 @@
-var SearchBar = React.createClass({
-    handleChange: function() {
-        "use strict";
-        var self = this;
-        self.props.onUserInput(
-            self.refs.filterTextInput.getDOMNode().value
+class SearchBar extends React.Component {
+    constructor() {
+        super();
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange() {
+        this.props.onUserInput(
+            this.refs.filterTextInput.getDOMNode().value
         );
-    },
-    render: function(){
-        "use strict";
+    }
+    render() {
         return (<div className="wrapper">
                     <header className="header"><h1>Pokedex</h1></header>
                     <form>
@@ -21,4 +22,4 @@ var SearchBar = React.createClass({
                     </form>
                 </div>);
     }
-});
+};
