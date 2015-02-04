@@ -9,8 +9,8 @@ describe('PokemonRow', function() {
     var pokemon = {name:'Wuzzy'};
     var pokemonRow = TestUtils.renderIntoDocument(<PokemonRow pokemon={pokemon} key={pokemon.name}/>);
 
-    // Verify that it actually was made.
-    var name = TestUtils.findRenderedDOMComponentWithTag(pokemonRow,'p');
-    expect(name.getDOMNode().textContent).toEqual(pokemon.name);
+    // Verify that it actually was made with the right name.
+    var name = React.findDOMNode(pokemonRow).textContent;
+    expect(name).toEqual(pokemon.name);
   });
 });
