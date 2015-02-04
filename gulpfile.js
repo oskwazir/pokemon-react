@@ -47,7 +47,6 @@ gulp.task('browserify',  ['jsx'], function() {
       .pipe(buffer())
       .pipe($.sourcemaps.init({loadMaps: true}))
         // Add transformation tasks to the pipeline here.
-      .pipe($.sixTofive())
       .pipe($.uglify())
       .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest('./js/'));
@@ -76,6 +75,7 @@ gulp.task('styles', function () {
 gulp.task('jsx', function () {
     return gulp.src('src/js/*.react.js')
         .pipe($.react())
+        .pipe($.sixTofive())
         .pipe(gulp.dest('build'))
         .pipe($.size());;
 });
