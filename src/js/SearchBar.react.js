@@ -1,15 +1,15 @@
+/* @flow */
 var React = require('react');
 class SearchBar extends React.Component {
-    constructor() {
+    handleChange: Function;
+    constructor(): void {
         super();
         this.handleChange = this.handleChange.bind(this);
     }
-    handleChange() {
-        this.props.onUserInput(
-            this.refs.filterTextInput.getDOMNode().value
-        );
+    handleChange(): void {
+        this.props.onUserInput(this.refs.filterTextInput.getDOMNode().value);
     }
-    render() {
+    render(): any {
         return (<form>
                     <input 
                         value={this.props.filterText}

@@ -1,0 +1,7 @@
+[ignore]
+.*/build/.*
+[include]
+./src/*.react.js
+[libs]
+
+[options]

@@ -1,7 +1,8 @@
+/* @flow */
 "use strict";
 
 var React = require('react');
-var FilterablePokedexTable = require('./FilterablePokedexTable.react');
+var FilterableFlexGrid:any = require('./FilterableFlexGrid.react');
 
 var POKEMON = [{"name": "rattata", "resource_uri": "api/v1/pokemon/19/"},
 {"name": "charmander", "resource_uri": "api/v1/pokemon/4/"},
@@ -43,4 +44,4 @@ var POKEMON = [{"name": "rattata", "resource_uri": "api/v1/pokemon/19/"},
 {"name": "gloom", "resource_uri": "api/v1/pokemon/44/"},
 {"name": "vileplume", "resource_uri": "api/v1/pokemon/45/"}];
 
-React.render(<FilterablePokedexTable  pokemon={POKEMON} />, document.getElementById('container'));
+React.render(<FilterableFlexGrid  pokemon={POKEMON} />, document.getElementById('container'));

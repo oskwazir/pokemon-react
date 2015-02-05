@@ -1,29 +1,33 @@
+/* @flow */
 var React = require('react');
-var SearchBar = require('./SearchBar.react');
-var PokedexTable = require('./PokedexTable.react');
+var SearchBar:any = require('./SearchBar.react');
+var FlexGrid:any = require('./FlexGrid.react');
 
-class FilterablePokedexTable extends React.Component {
-    constructor(props) {
+class FilterableFlexGrid extends React.Component {
+    state: {filterText: string};
+    handleUserInput: Function;
+
+    constructor(props: Object): void {
         super(props);
         this.state = {filterText: ''};
         this.handleUserInput = this.handleUserInput.bind(this);
     }
-    handleUserInput(filterText) {
+    handleUserInput(filterText: string) {
         this.setState({
             filterText: filterText
         });
     }
-    render(){
+    render(): any{
         return (
                 <div>
                     <SearchBar 
                         filterText={this.state.filterText}
                         onUserInput={this.handleUserInput} />
-                    <PokedexTable 
+                    <FlexGrid 
                         filterText={this.state.filterText}
                         pokemon={this.props.pokemon} />
                 </div>);
     }
 };
 
-module.exports = FilterablePokedexTable;
+module.exports = FilterableFlexGrid;
