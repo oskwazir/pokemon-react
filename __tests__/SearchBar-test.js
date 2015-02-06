@@ -1,5 +1,4 @@
 jest.dontMock('../build/SearchBar.react')
-var util = require('util');
 describe('SearchBar', function(){
   var React, TestUtils, SearchBar, fakeInputHandler;
   
