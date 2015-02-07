@@ -33,7 +33,7 @@ function handleError(err) {
   this.emit('end');
 }
 
-gulp.task('browserify',  ['jsx'], function() {
+gulp.task('browserify',  ['transpile'], function() {
 
   var bundler = browserify({
     entries: ['./build/app.react.js'],
@@ -72,12 +72,10 @@ gulp.task('styles', function () {
         .pipe($.size());
 });
 
-gulp.task('jsx', function () {
+gulp.task('transpile', function () {
     return gulp.src('src/js/*.react.js')
-        .pipe($.react())
         .pipe($.sixTofive())
-        .pipe(gulp.dest('build'))
-        .pipe($.size());;
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('serve', ['build', 'browser-sync'],  function() {
