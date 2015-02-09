@@ -12,6 +12,7 @@ var $ = require('gulp-load-plugins')({
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
+var watchify = require('watchify');
 var getBundleName = function () {
   var version = require('./package.json').version;
   var name = require('./package.json').name;
@@ -35,10 +36,10 @@ function handleError(err) {
 
 gulp.task('browserify',  ['transpile'], function() {
 
-  var bundler = browserify({
+  var bundler = watchify(browserify({
     entries: ['./build/app.react.js'],
     debug: true
-  });
+  }));
 
   var bundle = function() {
     return bundler
