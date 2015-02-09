@@ -17,13 +17,6 @@ class FilterableFlexGrid extends React.Component {
         this.handleUserInput = this.handleUserInput.bind(this);
     }
     componentDidMount(){
-        // request.get('http://pokeapi.co/api/v1/pokedex/1/')
-        //     .end(function (res) {
-        //        const responseText = JSON.parse(res.text);
-        //         // this.setState({
-        //         //     pokemon:responseText.pokemon
-        //         // })
-        //     });
     request('http://pokeapi.co/api/v1/pokedex/1/', res => {
         const responseText = res.body;
          this.setState({
