@@ -10,15 +10,19 @@ class SearchBar extends React.Component {
         this.props.onUserInput(this.refs.filterTextInput.getDOMNode().value);
     }
     render(): any {
-        return (<form>
-                    <input 
-                        value={this.props.filterText}
-                        onChange={this.handleChange}
-                        ref="filterTextInput"
-                        className="searchBar h1" 
-                        type="text" 
-                        placeholder="Search..." />
-                </form>);
+        return (
+                <ul className="navigation">
+                  <li><a href="#">Pokedex</a></li>
+                    <form>
+                        <input 
+                            value={this.props.filterText}
+                            onChange={this.handleChange}
+                            ref="filterTextInput"
+                            className="searchBar h1" 
+                            type="text" 
+                            placeholder="Search..." />
+                    </form>
+                </ul>);
     }
 };
 module.exports = SearchBar;

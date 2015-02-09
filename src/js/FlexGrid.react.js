@@ -9,13 +9,13 @@ class FlexGrid extends React.Component{
         this.render = this.render.bind(this);
       }
     render(): any {
-        return (<div className="main">
+        return (<main className="main">
             {this.props.pokemon.map( p => {
-                if( p.name.indexOf(this.props.filterText) === -1){
+                if( p.name.indexOf(this.props.filterText.toLowerCase()) === -1){
                     return;
                 }
                 return <FlexCell title={p.name} key={p.name} />
-            })}</div>);
+            })}</main>);
     }
 };
 
