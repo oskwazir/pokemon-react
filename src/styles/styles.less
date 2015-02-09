@@ -3,6 +3,12 @@
 @gray:         lighten(#000, 33.5%); // #555
 @gray-light:   lighten(#000, 46.7%); // #777
 @gray-lighter: lighten(#000, 93.5%); // #eee
+@red:#A32500;
+@black:#2B2922;
+@cream:#FCFAE6;
+@cream-dark:#BAB293;
+@cream-darker:#A39770;
+
 @base-background-color: #222;
 @text-color: #eee;
 @font-family-sans-serif:  "brandon-grotesque", "Avenir Next", "Segoe UI", sans-serif;
@@ -22,12 +28,16 @@
 
 body{
   font-family:@font-family-sans-serif;
+  font-size:14px;
+  background-color: @cream;
 }
 .searchBar{
-  height:3rem;
+  height:2rem;
   width:18rem;
   border:1px solid @gray-light;
-  background-color: @gray-lighter;
+  background-color: @cream;
+  margin-top:1.6rem;
+  font-size:1.1rem;
 }
 
 
@@ -35,7 +45,7 @@ body{
   list-style: none;
   margin: 0; 
   
-  background: @gray-dark;
+  background: @red;
   display: flex;
   
   -webkit-flex-flow: row wrap;
@@ -45,8 +55,10 @@ body{
 .navigation a {
   text-decoration: none;
   display: block;
-  padding: 1em;
-  color: white;
+  padding: 1.4rem;
+  color: @cream;
+  font-size:1.8rem;
+  text-shadow:@black 2px 2px 6px;
 }
 
 .navigation a:hover {
@@ -76,5 +88,16 @@ body{
   
   .navigation li:last-of-type a {
     border-bottom: none;
+  }
+
+  .searchBar{
+    height:2rem;
+    width:100%;
+    border:none;
+    outline:none;
+    border-bottom:1rem solid @red;
+    background-color: @cream;
+    margin-top:1.6rem;
+    font-size:1.1rem;
   }
 }
