@@ -17,7 +17,7 @@ class FilterableFlexGrid extends React.Component {
         this.handleUserInput = this.handleUserInput.bind(this);
     }
     componentDidMount(){
-    request('http://localhost:8080/pokedex', res => {
+    request('http://pokeapi.azurewebsites.net/pokedex', res => {
         const responseText = res.body;
          this.setState({
             pokemon:responseText.pokemon
