@@ -1,9 +1,12 @@
 /* @flow */
 var React = require('react');
 class FlexCell extends React.Component{
+    handleClick() {
+        this.props.clickHandler(`${this.props.title}`);
+    }
     render(): any  {
         return <div className="cell animated fadeIn">
-          <p>{this.props.title}</p>
+          <p onClick={this.handleClick.bind(this)}>{this.props.title}</p>
         </div>;
     }
 };
