@@ -1,6 +1,7 @@
 /* @flow */
 var React = require('react');
 var FlexCell: any = require('./FlexCell.react');
+var FlexDetail = require('./FlexDetail.react');
 
 class FlexGrid extends React.Component{
     state: {detail: string};
@@ -19,13 +20,15 @@ class FlexGrid extends React.Component{
     }
     render(): any {
         if(this.state.detail){
-            return (<h1 onClick={this.handleDetailClosing.bind(this)}>{this.state.detail}</h1>);
+            return (<FlexDetail title={this.state.detail}
+                                closeHandler={this.handleDetailClosing.bind(this)}/>);
         } else {
-            return (<main className="main">
-            {this.props.pokemon.map( p => {
-                if( p.name.indexOf(this.props.filterText.toLowerCase()) === -1){
-                    return;
-                }
+            return (
+                <main className="main">
+                {this.props.pokemon.map( p => {
+                    if( p.name.indexOf(this.props.filterText.toLowerCase()) === -1){
+                        return;
+                    }
                 return <FlexCell title={p.name} key={p.name} clickHandler={this.handleDetailSelection.bind(this)}/>
             })}</main>);
         }
