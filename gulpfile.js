@@ -5,10 +5,7 @@ var del = require('del');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var plugins = require('gulp-load-plugins')();
-var $ = require('gulp-load-plugins')({
-  pattern: ['gulp-*'],
-  rename: {'gulp-6to5':'sixTofive'}
-});
+var $ = require('gulp-load-plugins')({ pattern: ['gulp-*'] });
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
@@ -23,7 +20,7 @@ gulp.task('browser-sync',  ['build'],  function() {
   browserSync({
     server: {
       baseDir: './',
-      directory: false,
+      directory: false
     },
     open: false
   });
@@ -37,7 +34,7 @@ function handleError(err) {
 gulp.task('browserify',  ['transpile'], function() {
 
   var bundler = watchify(browserify({
-    entries: ['./build/app.react.js'],
+    entries: ['./build/js/app.react.js'],
     debug: true
   }));
 
@@ -75,8 +72,8 @@ gulp.task('styles', function () {
 
 gulp.task('transpile', function () {
     return gulp.src('src/js/*.react.js')
-        .pipe($.sixTofive())
-        .pipe(gulp.dest('build'));
+        .pipe($.babel())
+        .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('serve', ['build', 'browser-sync'],  function() {
