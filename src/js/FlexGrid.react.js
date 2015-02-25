@@ -12,7 +12,6 @@ class FlexGrid extends React.Component{
         this.render = this.render.bind(this);
     }
     handleDetailSelection(title: string) {
-        console.log(`You picked ${title}`);
         this.setState({detail:title});
     }
     handleDetailClosing(){
@@ -29,7 +28,10 @@ class FlexGrid extends React.Component{
                     if( p.name.indexOf(this.props.filterText.toLowerCase()) === -1){
                         return;
                     }
-                return <FlexCell title={p.name} key={p.name} clickHandler={this.handleDetailSelection.bind(this)}/>
+                return <FlexCell 
+                                title={p.name} 
+                                key={p.name} 
+                                clickHandler={this.handleDetailSelection.bind(this)}/>
             })}</main>);
         }
     }
