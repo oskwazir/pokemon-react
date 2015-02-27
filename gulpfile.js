@@ -71,7 +71,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('transpile', function () {
-    return gulp.src('src/js/*.react.js')
+    return gulp.src('src/js/**/*.js')
         .pipe($.babel())
         .pipe(gulp.dest('build/js'));
 });
