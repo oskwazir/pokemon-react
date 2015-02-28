@@ -5,7 +5,7 @@ const AppDispatcher = assign(new Dispatcher, {
     handleViewAction(action){
     console.log('action', action);
     this.dispatch({
-      source: 'VIEW_ACTION',
+      source: 'VIEW_POKEMON ',
       action:action
     })
   }
